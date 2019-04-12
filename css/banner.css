@@ -1,0 +1,356 @@
+ol.skate,
+ul.skate,
+ol.skate > li,
+ul.skate > li {
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.skate {
+	background: inherit;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	transform: translateX(0);
+	width: 100%;
+}
+
+.skate, .skate ~ nav {
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+
+.skate > * {
+	background: #FFF;
+	height: 100%;
+	overflow: auto;
+	position: absolute;
+	width: 100%;
+}
+
+.skate > * > * {
+	overflow: auto;
+}
+
+.skate > * > a {
+	display: block;
+}
+
+.skate nav,
+.skate ~ nav {
+	width: 100%;
+}
+
+.skate ~ nav { 
+	position: relative;
+}
+
+.skate nav ul,
+.skate nav ul li,
+.skate ~ nav ul,
+.skate ~ nav ul li {
+	display: inline;
+}
+
+.skate-next-prev a {
+	color: inherit;
+	margin-top: -0.5em;
+	position: absolute;
+	text-decoration: none;
+	top: 50%;
+	z-index: 99;
+}
+
+.skate-prev {
+	left: .25em;
+}
+
+.skate-next {
+	right: .25em;
+}
+
+.skate-slide-navigation {
+	bottom: 0;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	z-index: 99;
+}
+
+.skate > .skate-target ~ :last-child,
+.skate > :target ~ :last-child,
+.skate > * {
+	z-index: 1;
+}
+
+.skate > :last-child {
+	z-index: 2;
+}
+
+.skate > .skate-target,
+.skate > :target {
+	z-index: 2;
+}
+
+
+.slide-animation ul li {
+	transition: transform 0.5s ease-in 0s, visibility 0s ease 0s;
+	}
+
+/**
+
+CROSSFADE
+
+**/
+[data-skate=crossfade].skate.skate-css > * {
+	-webkit-transition: opacity .5s ease;
+	-moz-transition: opacity .5s ease;
+	transition: opacity .5s ease;
+}
+
+[data-skate=crossfade].skate.skate-css > .skate-target ~ :last-child,
+[data-skate=crossfade].skate.skate-css > :target ~ :last-child,
+[data-skate=crossfade].skate.skate-css > * {
+	opacity: 0;
+	z-index: 1;
+}
+
+[data-skate=crossfade].skate.skate-css > :last-child {
+	opacity: 1;
+}
+
+[data-skate=crossfade].skate.skate-css > .skate-target,
+[data-skate=crossfade].skate.skate-css > :target {
+	opacity: 1;
+	z-index: 2;
+}
+
+
+
+
+/**
+
+SLIDE
+
+**/
+[data-skate=slide].skate.skate-css > * {
+	opacity: 1;
+	-webkit-transform: translateX(-100%);
+	-moz-transform: translateX(-100%);
+	transform: translateX(-100%);
+	-webkit-transition: -webkit-transform .5s ease-in 0s, visibility 0s ease .5s;
+	-moz-transition: -moz-transform .5s ease-in 0s, visibility 0s ease .5s;
+	transition: transform .5s ease-in 0s, visibility 0s ease .5s;
+}
+
+[data-skate=slide].skate.skate-css > *.skate-target,
+[data-skate=slide].skate.skate-css > *:last-child,
+[data-skate=slide].skate.skate-css > *:target {
+	opacity: 1;
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	transform: translateX(0);
+	-webkit-transition: -webkit-transform .5s ease-in, visibility 0s ease;
+	-moz-transition: -webkit-transform .5s ease-in, visibility 0s ease;
+	transition: -webkit-transform .5s ease-in, visibility 0s ease;
+}
+
+[data-skate=slide].skate.skate-css > .skate-target ~ *,
+[data-skate=slide].skate.skate-css > .skate-target ~ *:last-child,
+[data-skate=slide].skate.skate-css > :target ~ *,
+[data-skate=slide].skate.skate-css > :target ~ *:last-child {
+	left: -200%;
+	-webkit-transform: translateX(100%);
+	-moz-transform: translateX(100%);
+	transform: translateX(100%);
+	-webkit-transition: -webkit-transform .5s ease-in, visibility 0s ease .5s, left 0s ease .5s;
+	-moz-transition: -moz-transform .5s ease-in, visibility 0s ease .5s, left 0s ease .5s;
+	transition: transform .5s ease-in, visibility 0s ease .5s, left 0s ease .5s;
+	visibility: hidden;
+}
+
+
+
+
+/**
+
+CARDS
+
+**/
+
+[data-skate=cards].skate.skate-css > .skate-target ~ :last-child,
+[data-skate=cards].skate.skate-css > *,
+[data-skate=cards].skate.skate-css > :target ~ :last-child {
+	-webkit-transform: translateY(120%) rotate(5deg);
+	-moz-transform: translateY(120%) rotate(5deg);
+	transform: translateY(120%) rotate(5deg);
+	
+	-webkit-transition: -webkit-transform .5s ease-in, z-index 0s ease .5s;
+	-moz-transition: -moz-transform .5s ease-in, z-index 0s ease .5s;
+	transition: transform .5s ease-in, z-index 0s ease .5s;
+}
+
+[data-skate=cards].skate.skate-css > *:nth-child(even) {
+	-webkit-transform: translateY(120%) rotate(-5deg);
+	-moz-transform: translateY(120%) rotate(-5deg);
+	transform: translateY(120%) rotate(-5deg);
+}
+
+[data-skate=cards].skate.skate-css > * {
+	-webkit-transition: -webkit-transform .5s ease-in 0s, z-index 0s ease .5s;
+	-moz-transition: -moz-transform .5s ease-in 0s, z-index 0s ease .5s;
+	transition: transform .5s ease-in 0s, z-index 0s ease .5s;
+}
+
+[data-skate=cards].skate.skate-css > .skate-target,
+[data-skate=cards].skate.skate-css > :last-child,
+[data-skate=cards].skate.skate-css > :target {
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	transform: translateY(0);
+	-webkit-transition: z-index 0s ease .5s;
+	-moz-transition: z-index 0s ease .5s;
+	transition: z-index 0s ease .5s;
+}
+
+
+	/*  Custom.css  */
+	
+/* Fake Reset. */
+* {
+margin: 0px;
+padding: 0px;
+}
+*, *:before, *:after {
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+/* Required to set a height and width. */
+.my-skate-container .skate {
+height: 550px;
+width: 100%;
+}
+/* Custom classes to make it all look right. */
+
+.my-skate-container {}
+.my-skate-container .skate {
+background: #000;
+}
+.my-skate-container > ul > li > a {
+display: block;
+height: 100%;
+width: 100%;
+}
+.my-skate-container > ul > li > div, .my-skate-container > ul > li > a > div {
+display: table;
+color: rgb(243, 236, 220);
+height: 100%;
+line-height: 1;
+text-align: left;
+width: 100%;
+}
+.my-skate-container > ul > li > div > div, .my-skate-container > ul > li > a > div > div {
+vertical-align: middle;
+}
+.my-skate-container > ul > li > a > div > div, .my-skate-container > ul > li > div > div {
+padding: 0px 30px;
+}
+
+.my-skate-container > ul > li:first-child > a > div, .my-skate-container > ul > li:first-child > div {
+background:url(../images/slide1.jpg) center;
+background-size: cover;
+}
+.my-skate-container > ul > li:first-child + li > div, .my-skate-container > ul > li:first-child + li > a > div {
+background:url(../images/slide2.jpg) center;
+background-size: cover;
+}
+.my-skate-container > ul > li:first-child + li + li > div, .my-skate-container > ul > li:first-child + li + li > a > div {
+background:url(../images/slide3.jpg) center;
+background-size: cover;
+}
+.my-skate-container nav a {
+color: rgb(243, 236, 220);
+font-size: 50px; text-shadow: 0px 0px 10px #000;
+text-decoration: none;
+}
+.my-skate-container .skate-slide-navigation {
+    bottom: 1em; left: 0; text-align: center; width: 70px; margin: 0px auto; display: block; right: 0px;
+}
+.my-skate-container .skate-slide-navigation li a {
+font-size: 28px; padding:0px 1px; margin:0px 0px;
+opacity: .8;
+}
+nav {
+}
+/* Customized Transitions */
+
+
+.my-skate-container .skate.skate-no-js > .skate-target ~ :last-child div div, .my-skate-container .skate.skate-no-js > :target ~ :last-child div div, .my-skate-container .skate.skate-no-js > * div div {
+opacity: 0;
+-webkit-transform: translateY(-500px);
+-moz-transform: translateY(-500px);
+transform: translateY(-500px);
+-webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
+-moz-transition: opacity 1s ease, -moz-transform 1s ease;
+transition: opacity 1s ease, transform 1s ease;
+z-index: 1;
+}
+.my-skate-container .skate.skate-no-js > :last-child div div {
+opacity: 1;
+-webkit-transform: translateY(0);
+-moz-transform: translateY(0);
+transform: translateY(0);
+z-index: 2;
+}
+.my-skate-container .skate.skate-no-js > .skate-target div div, .my-skate-container .skate.skate-no-js > :target div div {
+opacity: 1;
+-webkit-transform: translateY(0);
+-moz-transform: translateY(0);
+transform: translateY(0);
+z-index: 3;
+}
+body > div > section {
+display: none;
+}
+body > div > section.no-animation {
+display: block;
+}
+body > div > section.crossfade-animation {
+display: block;
+}
+body > div > section.slide-animation {
+display: block;
+}
+body > div > section.cards-animation {
+display: block;
+}
+.my-skate-container .skate > * {
+height: 460px;
+}
+
+
+.bann_content {
+	width:1150px; margin:0px auto; text-align:left; box-sizing:border-box; padding:100px 0px 0px 0px !important;
+	font-family:'Roboto';
+	}	
+.bann_content h2 {
+	font-size:46px; width:65%; font-weight:400; padding:0px 0px 20px; line-height:50px;
+	}
+.bann_content p {
+	font-size:18px; width:65%; font-weight:300; padding:0px 0px 20px; line-height:28px;
+	}
+.bann_content a {
+	display:inline-block; background-color:#005984; padding:12px 25px; text-decoration:none; color:#fff; border-radius:5px; font-weight:500;
+	text-transform:uppercase;
+	}
+.bann_content a:hover {
+	background-color:#014769;
+	}				
+	

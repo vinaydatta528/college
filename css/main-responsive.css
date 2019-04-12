@@ -1,0 +1,5 @@
+@media screen and (max-width: 1160px){
+.head_inn { width:auto; padding:0px 15px;}
+.bann_content { width:90%; padding:20% 5% 0px 5% !important; text-align:center;}	
+.bann_content h2, .bann_content p  { width:100%;}
+}
